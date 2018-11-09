@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "812485923991",
+    "firebase_url": "https://crashdemo-dec78.firebaseio.com",
+    "project_id": "crashdemo-dec78",
+    "storage_bucket": "crashdemo-dec78.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:812485923991:android:22497c77b3b6188d",
+        "android_client_info": {
+          "package_name": "com.alex.crashdemo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "812485923991-adopo7hsr46h3gge66vts5b0lk4jgab6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.alex.crashdemo",
+            "certificate_hash": "0f208988f50a8cfe06f2f38e1837a4fbae03f5f1"
+          }
+        },
+        {
+          "client_id": "812485923991-rcdh8vrmnurdhseul5gku823lpr6db8v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDYpJxVLCOdbZdX-b-6akmoIOFTSGa8AXw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "812485923991-rcdh8vrmnurdhseul5gku823lpr6db8v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
