@@ -15,7 +15,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+
+import com.crashlytics.android.Crashlytics;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -25,7 +29,11 @@ public class MainActivity extends AppCompatActivity
 
     private SharedPreferences pref;
     private SharedPreferences.Editor borr;
-    //@BindView(R.id.username) TextView userName;
+    //@BindView(R.id.button_action) Button buttonAction;
+    @BindView(R.id.fullnameEtext) EditText fullName;
+    @BindView(R.id.ciudadEtext) EditText ciudad;
+    @BindView(R.id.telefonoEtext) EditText telefono;
+    @BindView(R.id.profesionEtext) EditText profesion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,22 +45,43 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        //OBTENER PEFIL DE USUARIO
+        //OBTENER USUARIO
         pref = getApplicationContext().getSharedPreferences("Options", MODE_PRIVATE);
         borr = pref.edit();
-
         String user = pref.getString("USER", "");
-        Log.d("USER main", user);
 
+        //ENVIAR USUARIO A CRASHLITYCS
+        Crashlytics.setUserIdentifier(user);
+
+        //FLOATIN BUTTON
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+
+                String fullnameData = fullName.getText().toString().trim();
+                String ciudadData = ciudad.getText().toString().trim();
+                String telefonoData = telefono.getText().toString().trim();
+                String profesionData = profesion.getText().toString().trim();
+
+                Crashlytics.log(Log.DEBUG, "datos_usario",
+                        fullnameData+" / "+
+                        ciudadData+" / "+
+                        telefonoData+" / "+
+                        profesionData);
+
+
+                int telInt = 502 + Integer.parseInt(telefonoData);
+
+                //Crashlytics.getInstance().crash();
+
+                Snackbar.make(view, "Datos guardados", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+                clearData();
             }
         });
 
+        //DRAWER
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -63,9 +92,29 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
         View header = ((NavigationView)findViewById(R.id.nav_view)).getHeaderView(0);
 
+        //SETEAR USUARIO AL MENU LATERAL
         TextView userName = (TextView)header.findViewById(R.id.username);
         userName.setText(user);
+
+
+
+
+//        buttonAction.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Crashlytics.getInstance().crash();
+//            }
+//        });
+
+
     }//onCreate
+
+    private void clearData() {
+        fullName.getText().clear();
+        ciudad.getText().clear();
+        telefono.getText().clear();
+        profesion.getText().clear();
+    }
 
     @Override
     public void onBackPressed() {

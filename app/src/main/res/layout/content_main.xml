@@ -21,14 +21,50 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:paddingTop="80dp">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center">
+        android:layout_margin="10dp"
+        android:orientation="vertical">
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="es es mi contendio"/>
+            android:gravity="center"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:text="Completa tus datos"/>
+        <EditText
+            android:id="@+id/fullnameEtext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:hint="Nombre Completo"/>
+        <EditText
+            android:id="@+id/ciudadEtext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:hint="Ciudad"/>
+        <EditText
+            android:id="@+id/telefonoEtext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:hint="Telefono"/>
+        <EditText
+            android:id="@+id/profesionEtext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:imeOptions="actionDone"
+            android:hint="Profesion"/>
+
+        <!--<Button-->
+            <!--android:id="@+id/button_action"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="Aceptar"/>-->
     </LinearLayout>
 </LinearLayout>
